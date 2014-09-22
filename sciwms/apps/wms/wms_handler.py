@@ -55,6 +55,12 @@ def get_projection_string(request):
 
     return projstr
 
+def get_layers(request):
+    """
+    Layers are variables that are to be plotted
+    """
+    return request.GET.get("LAYERS","").split(",")
+
 def get_elevation(request):
     """
     Return the elevation
