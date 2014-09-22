@@ -98,32 +98,32 @@ def tricontourf_canvas(triang_subset,
                        nlvls = 15):
     pass
 
-def tricontourf_canvas(topology, datasetnc, request):
-    """
-    topology - netcdf topology object
-    dataset - netcdf dataset object
-    request - original http request
-    """
-    import wms_handler
-    from sciwms.util import get_pyproj
+# def tricontourf_canvas(topology, datasetnc, request):
+#     """
+#     topology - netcdf topology object
+#     dataset - netcdf dataset object
+#     request - original http request
+#     """
+#     import wms_handler
+#     from sciwms.util import get_pyproj
 
-    logger.debug("In matplotlib_handler.tricontourf_canvas")
+#     logger.debug("In matplotlib_handler.tricontourf_canvas")
     
-    xmin, ymin, xmax, ymax = wms_handler.get_bbox(request)
-    logger.debug("bbox (crs) = {0}".format([xmin, ymin, xmax, ymax]))
+#     xmin, ymin, xmax, ymax = wms_handler.get_bbox(request)
+#     logger.debug("bbox (crs) = {0}".format([xmin, ymin, xmax, ymax]))
 
-    proj = get_pyproj(request)
-    lonmin, latmin = proj(xmin, ymin, inverse=True)
-    lonmax, latmax = porj(xmax, ymax, inverse=True)
+#     proj = get_pyproj(request)
+#     lonmin, latmin = proj(xmin, ymin, inverse=True)
+#     lonmax, latmax = proj(xmax, ymax, inverse=True)
 
-    logger.debug("bbox (lat/lon) = {0}".format([lonmin,latmin,lonmax,latmax]))
+#     logger.debug("bbox (lat/lon) = {0}".format([lonmin,latmin,lonmax,latmax]))
 
-    #compute triangular subset
-    lon = topology.nodes[:,0]
-    lat = topology.nodes[:,1]
-    latlon_sub_idx = get_lat_lon_subset_idx(topology.nodes[:,0], topology[:,1], lonmin, latmin, lonmax, latmax)
+#     #compute triangular subset
+#     lon = topology.nodes[:,0]
+#     lat = topology.nodes[:,1]
+#     latlon_sub_idx = get_lat_lon_subset_idx(topology.nodes[:,0], topology[:,1], lonmin, latmin, lonmax, latmax)
 
-    nv_sub_idx = get_nv_subset_idx(topology.faces[:], sub_idx)
+#     nv_sub_idx = get_nv_subset_idx(topology.faces[:], sub_idx)
 
 def tricontourf_response(triang_subset,
                          data,
